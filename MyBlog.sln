@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog", "MyBlog\MyBlog.csproj", "{77CCD187-E8CB-449C-AFD5-8CE1DEC8BED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlogTests", "MyBlogTests\MyBlogTests.csproj", "{8CA1B33D-C81D-4A8C-B557-8691C6B795C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77CCD187-E8CB-449C-AFD5-8CE1DEC8BED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CCD187-E8CB-449C-AFD5-8CE1DEC8BED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CCD187-E8CB-449C-AFD5-8CE1DEC8BED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CCD187-E8CB-449C-AFD5-8CE1DEC8BED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA1B33D-C81D-4A8C-B557-8691C6B795C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA1B33D-C81D-4A8C-B557-8691C6B795C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA1B33D-C81D-4A8C-B557-8691C6B795C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA1B33D-C81D-4A8C-B557-8691C6B795C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75A90E63-FDA9-4EC1-96D0-F527B4969064}
+	EndGlobalSection
+EndGlobal
