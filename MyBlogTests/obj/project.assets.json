@@ -29,6 +29,15 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "Markdig.Signed/0.18.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/Markdig.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Markdig.Signed.dll": {}
+        }
+      },
       "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.3": {
         "type": "package",
         "dependencies": {
@@ -2154,6 +2163,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
         "dependencies": {
+          "Markdig.Signed": "0.18.0",
           "Microsoft.CodeAnalysis.FxCopAnalyzers": "2.9.3"
         },
         "compile": {
@@ -2219,6 +2229,28 @@
         "build/netstandard1.0/coverlet.core.pdb",
         "coverlet.collector.1.0.1.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "Markdig.Signed/0.18.0": {
+      "sha512": "/aIr1wrvfu51VlPKvC7EktcYO+KmzEKnTudZ1VqVibCZNJETNWQuV5ARCGx1Nya6rdea3R7o0HV/JKUtmj5pkg==",
+      "type": "package",
+      "path": "markdig.signed/0.18.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Markdig.Signed.dll",
+        "lib/net35/Markdig.Signed.xml",
+        "lib/net40/Markdig.Signed.dll",
+        "lib/net40/Markdig.Signed.xml",
+        "lib/netcoreapp2.1/Markdig.Signed.dll",
+        "lib/netcoreapp2.1/Markdig.Signed.xml",
+        "lib/netstandard2.0/Markdig.Signed.dll",
+        "lib/netstandard2.0/Markdig.Signed.xml",
+        "lib/uap10.0/Markdig.Signed.dll",
+        "lib/uap10.0/Markdig.Signed.pri",
+        "lib/uap10.0/Markdig.Signed.xml",
+        "markdig.signed.0.18.0.nupkg.sha512",
+        "markdig.signed.nuspec"
       ]
     },
     "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.3": {

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Services
 {
-    interface IPostData
+    public interface IPostData
     {
-        IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAllExcerpts();
+        Post GetBySlug(string slug);
     }
 }

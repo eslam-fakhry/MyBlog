@@ -129,6 +129,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Markdig.Signed": {
+              "target": "Package",
+              "version": "[0.18.0, )"
+            },
             "Microsoft.CodeAnalysis.FxCopAnalyzers": {
               "target": "Package",
               "version": "[2.9.3, )"

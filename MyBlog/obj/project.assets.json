@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
+      "Markdig.Signed/0.18.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/Markdig.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Markdig.Signed.dll": {}
+        }
+      },
       "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.3": {
         "type": "package",
         "dependencies": {
@@ -41,6 +50,28 @@
     }
   },
   "libraries": {
+    "Markdig.Signed/0.18.0": {
+      "sha512": "/aIr1wrvfu51VlPKvC7EktcYO+KmzEKnTudZ1VqVibCZNJETNWQuV5ARCGx1Nya6rdea3R7o0HV/JKUtmj5pkg==",
+      "type": "package",
+      "path": "markdig.signed/0.18.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/Markdig.Signed.dll",
+        "lib/net35/Markdig.Signed.xml",
+        "lib/net40/Markdig.Signed.dll",
+        "lib/net40/Markdig.Signed.xml",
+        "lib/netcoreapp2.1/Markdig.Signed.dll",
+        "lib/netcoreapp2.1/Markdig.Signed.xml",
+        "lib/netstandard2.0/Markdig.Signed.dll",
+        "lib/netstandard2.0/Markdig.Signed.xml",
+        "lib/uap10.0/Markdig.Signed.dll",
+        "lib/uap10.0/Markdig.Signed.pri",
+        "lib/uap10.0/Markdig.Signed.xml",
+        "markdig.signed.0.18.0.nupkg.sha512",
+        "markdig.signed.nuspec"
+      ]
+    },
     "Microsoft.CodeAnalysis.FxCopAnalyzers/2.9.3": {
       "sha512": "k8wrTEpm0BE16zxqOHJ4xXxsWTbx5oINrgkLrMc3US8H/LJAx0OyXmTGOuwGEM2Tqa6L5RU1MPgeiWKwAMVkuw==",
       "type": "package",
@@ -224,6 +255,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "Markdig.Signed >= 0.18.0",
       "Microsoft.CodeAnalysis.FxCopAnalyzers >= 2.9.3"
     ]
   },
@@ -271,6 +303,10 @@
     "frameworks": {
       "netcoreapp3.0": {
         "dependencies": {
+          "Markdig.Signed": {
+            "target": "Package",
+            "version": "[0.18.0, )"
+          },
           "Microsoft.CodeAnalysis.FxCopAnalyzers": {
             "target": "Package",
             "version": "[2.9.3, )"
