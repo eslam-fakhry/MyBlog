@@ -21,7 +21,7 @@ namespace MyBlog.Services
         public IEnumerable<string> GetAll()
         {
             if (!Directory.Exists(_markdownFolder)) throw new DirectoryNotFoundException();
-            foreach (var file in Directory.EnumerateFiles(_markdownFolder, "*.md"))
+            foreach (var file in Directory.EnumerateFiles(_markdownFolder, "*.md").OrderByDescending(filename => filename))
             {
                 yield return File.ReadAllText(file);
             }
