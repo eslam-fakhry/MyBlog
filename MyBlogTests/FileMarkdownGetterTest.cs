@@ -68,7 +68,7 @@ namespace MyBlogTests
 
             var fileMarkdownGetter = new FileMarkdownGetter(envMock.Object, configurationMock.Object);
 
-            Assert.Throws<DirectoryNotFoundException>(() => fileMarkdownGetter.GetAll());
+            Assert.Throws<DirectoryNotFoundException>(() => fileMarkdownGetter.GetAll().ToList());
         }
 
         [Fact]
