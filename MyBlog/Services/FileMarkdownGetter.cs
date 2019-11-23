@@ -30,7 +30,7 @@ namespace MyBlog.Services
         public string GetBySlug(string slug)
         {
             if (!Directory.Exists(_markdownFolder)) throw new DirectoryNotFoundException();
-            var file = Directory.GetFiles(_markdownFolder, $"{slug}.md").FirstOrDefault();
+            var file = Directory.GetFiles(_markdownFolder, $"*{slug}.md").FirstOrDefault();
             if (string.IsNullOrWhiteSpace(file)) throw new FileNotFoundException();
             return File.ReadAllText(file);
         }
