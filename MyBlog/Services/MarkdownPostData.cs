@@ -25,8 +25,12 @@ namespace MyBlog.Services
         {
             var markdown = _markdownGetter.GetBySlug(slug);
 
-            // ^---.*\ntags:([^\n]*).*---(?<content>.*)$
-            Regex rx = new Regex(@"^---(?<metadata>.*)---(?<content>.*)$",
+            return PostFromMarkdown(markdown);
+        }
+
+        private Post PostFromMarkdown(string markdown)
+        {
+            var rx = new Regex(@"^---(?<metadata>.*)---(?<content>.*)$",
                 RegexOptions.Singleline);
             Match ts = rx.Match(markdown);
 
@@ -36,7 +40,9 @@ namespace MyBlog.Services
             var metadataDictionary = GetMetadataDictionary(metadata);
 
 
-            var publishDate = !string.IsNullOrEmpty(metadataDictionary.GetValueOrDefault("date")) ? DateTime.Parse(metadataDictionary.GetValueOrDefault("date")) : DateTime.Now;
+            var publishDate = !string.IsNullOrEmpty(metadataDictionary.GetValueOrDefault("date"))
+                ? DateTime.Parse(metadataDictionary.GetValueOrDefault("date"))
+                : DateTime.Now;
 
             return new Post
             {
@@ -47,21 +53,32 @@ namespace MyBlog.Services
                 PublishDate = publishDate
             };
         }
+
         private Dictionary<string, string> GetMetadataDictionary(string metadata)
         {
-            var metadataDictionary = new Dictionary<string, string>();
             Regex rx = new Regex(@"(?<name>[a-zA-Z-]*):(?<value>[^\n]*)",
                 RegexOptions.Singleline);
             MatchCollection matches = rx.Matches(metadata);
 
+            return GetDictionaryFromMetadataMatches(matches);
+        }
+
+        private static Dictionary<string, string> GetDictionaryFromMetadataMatches(MatchCollection matches)
+        {
+            var metadataDictionary = new Dictionary<string, string>();
             foreach (Match match in matches)
             {
-                var name = match.Groups["name"].Value.Trim();
-                var value = match.Groups["value"].Value.Trim();
-                metadataDictionary.Add(name, value);
+                AddMatchItemToDictionary(match, metadataDictionary);
             }
 
             return metadataDictionary;
+        }
+
+        private static void AddMatchItemToDictionary(Match match, IDictionary<string, string> metadataDictionary)
+        {
+            var name = match.Groups["name"].Value.Trim();
+            var value = match.Groups["value"].Value.Trim();
+            metadataDictionary.Add(name, value);
         }
     }
 }
