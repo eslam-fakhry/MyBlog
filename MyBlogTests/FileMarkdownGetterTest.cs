@@ -14,7 +14,7 @@ namespace MyBlogTests
     public class FileMarkdownGetterTest
     {
         [Fact]
-        public void GetAll_ReturnsGeneratorOfPostString()
+        public void GetAll_ReturnsGeneratorOfPostString_WithDescendingOrder()
         {
             var envMock = new Mock<IHostEnvironment>();
             envMock.Setup(x => x.ContentRootPath)
@@ -27,6 +27,14 @@ namespace MyBlogTests
             var fileMarkdownGetter = new FileMarkdownGetter(envMock.Object, configurationMock.Object);
 
             Assert.Equal(2, fileMarkdownGetter.GetAll().ToList().Count);
+            Assert.Contains("Post 2",
+                fileMarkdownGetter.GetAll().ToList()[0],
+                StringComparison.Ordinal
+            );
+            Assert.Contains("Post 1",
+                fileMarkdownGetter.GetAll().ToList()[1],
+                StringComparison.Ordinal
+            );
         }
 
         [Theory]
