@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MyBlog.Utilities;
 
 namespace MyBlog.Services
 {
@@ -16,9 +17,20 @@ namespace MyBlog.Services
         {
             _markdownGetter = markdownGetter;
         }
-        public IEnumerable<Post> GetAllExcerpts()
+
+
+        public PaginatedCollection<Post> GetPaginatedPosts(int page, int pageSize)
         {
-            throw new NotImplementedException();
+            var markdowns = _markdownGetter.GetAll();
+            var count = _markdownGetter.GetAll().Count();
+
+
+            return new PaginatedCollection<Post>(
+                markdowns.Select(PostFromMarkdown).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                count,
+                page,
+                pageSize
+            );
         }
 
         public Post GetBySlug(string slug)
