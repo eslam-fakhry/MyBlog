@@ -5,21 +5,35 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using MyBlog.Models;
+using MyBlog.Services;
+using MyBlog.Utilities;
 
 namespace MyBlog.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private IPostData _postData;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IPostData postData)
         {
-            _logger = logger;
+            _postData = postData;
         }
 
-        public void OnGet()
-        {
+        public PaginatedCollection<Post> Posts { get; private set; }
 
+        public IActionResult OnGet(int? pageIndex)
+        {
+            const int pageSize = 2;
+            
+            Posts = _postData.GetPaginatedPosts(pageIndex ?? 1, pageSize);
+            
+            if (Posts == null)
+            {
+                return NotFound();
+            }
+
+            return Page();
         }
     }
 }
