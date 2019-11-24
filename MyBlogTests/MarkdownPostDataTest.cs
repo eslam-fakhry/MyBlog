@@ -16,6 +16,7 @@ namespace MyBlogTests
         {
             var slug = "my-first-blog-post";
             var markdown = @"---
+slug: my-first-blog-post
 title:Game Development with C#
 tags: c# .net game
 date:1-may-2019
@@ -34,6 +35,7 @@ excerpt:I will tell you all about that game development
             Assert.Equal(DateTime.Parse("1-may-2019"), post.PublishDate);
             Assert.Equal("I will tell you all about that game development", post.Excerpt);
             Assert.Equal("Game Development with C#", post.Title);
+            Assert.Equal("my-first-blog-post", post.Slug);
         }
 
         [Theory]

@@ -16,5 +16,6 @@ namespace MyBlog.Models
         [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
         public IEnumerable<string> Tags { get; set; }
+        public string Slug { get; set; }
     }
 }

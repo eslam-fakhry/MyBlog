@@ -79,6 +79,7 @@ namespace MyBlog.Services
                 Tags = metadataDictionary.GetValueOrDefault("tags").Split(" "),
                 Title = metadataDictionary.GetValueOrDefault("title"),
                 Excerpt = metadataDictionary.GetValueOrDefault("excerpt"),
+                Slug = metadataDictionary.GetValueOrDefault("slug"),
                 PublishDate = publishDate
             };
         }

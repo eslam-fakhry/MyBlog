@@ -28,6 +28,8 @@
       <Reference Include="Microsoft.AspNetCore.Mvc.RazorPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
         <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0\ref\netcoreapp3.0\Microsoft.AspNetCore.Mvc.RazorPages.dll</HintPath>
       </Reference>
+      <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+        <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.0.0\ref\netcoreapp3.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+      </Reference>
     </ItemGroup>
-
 </Project>
