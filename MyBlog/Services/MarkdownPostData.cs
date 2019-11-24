@@ -2,6 +2,7 @@
 using MyBlog.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -21,23 +22,39 @@ namespace MyBlog.Services
 
         public PaginatedCollection<Post> GetPaginatedPosts(int page, int pageSize)
         {
-            var markdowns = _markdownGetter.GetAll();
-            var count = _markdownGetter.GetAll().Count();
+            try
+            {
+                var markdowns = _markdownGetter.GetAll();
+                var count = _markdownGetter.GetAll().Count();
 
-
-            return new PaginatedCollection<Post>(
-                markdowns.Select(PostFromMarkdown).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
-                count,
-                page,
-                pageSize
-            );
+                return new PaginatedCollection<Post>(
+                    markdowns.Select(PostFromMarkdown).Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                    count,
+                    page,
+                    pageSize
+                );
+            }
+            catch (DirectoryNotFoundException exception)
+            {
+                return null;
+            }
         }
 
         public Post GetBySlug(string slug)
         {
-            var markdown = _markdownGetter.GetBySlug(slug);
-
-            return PostFromMarkdown(markdown);
+            try
+            {
+                var markdown = _markdownGetter.GetBySlug(slug);
+                return PostFromMarkdown(markdown);
+            }
+            catch (FileNotFoundException exception)
+            {
+                return null;
+            }
+            catch (DirectoryNotFoundException exception)
+            {
+                return null;
+            }
         }
 
         private Post PostFromMarkdown(string markdown)

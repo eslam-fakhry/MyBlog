@@ -2,6 +2,7 @@
 using MyBlog.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using MyBlog.Models;
 using Xunit;
@@ -73,19 +74,19 @@ excerpt:Another excerpt text
 ---
 ## heading 2",
             };
-            
+
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetAll()).Returns(() => markdowns);
             var markdownPostData = new MarkdownPostData(markdownGetter.Object);
             var posts = markdownPostData.GetPaginatedPosts(1, pageSize);
             Assert.IsAssignableFrom<IEnumerable<Post>>(posts);
-            Assert.Equal(pageSize,posts.Count);
+            Assert.Equal(pageSize, posts.Count);
         }
-        
+
         [Theory]
-        [InlineData(1,"Game Development with C#")]
-        [InlineData(2,"Another Post About Programming")]
-        public void GetPaginatedPosted_ReturnsAListOfPosts_WithTheRightPosts(int pageIndex , string expectedTitle)
+        [InlineData(1, "Game Development with C#")]
+        [InlineData(2, "Another Post About Programming")]
+        public void GetPaginatedPosted_ReturnsAListOfPosts_WithTheRightPosts(int pageIndex, string expectedTitle)
         {
             var markdowns = new List<string>
             {
@@ -118,12 +119,42 @@ excerpt:Another excerpt text
 ---
 ## heading 2",
             };
-            
+
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetAll()).Returns(() => markdowns);
             var markdownPostData = new MarkdownPostData(markdownGetter.Object);
             var posts = markdownPostData.GetPaginatedPosts(pageIndex, 2);
-            Assert.Equal(expectedTitle,posts.First().Title);
+            Assert.Equal(expectedTitle, posts.First().Title);
+        }
+
+        [Fact]
+        public void GetPaginatedPosts_RetunsNull_WhenMarkdownDirectoryDoesnotExist()
+        {
+            var markdownGetter = new Mock<IMarkdownGetter>();
+            markdownGetter.Setup(x => x.GetAll()).Throws<DirectoryNotFoundException>();
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var posts = markdownPostData.GetPaginatedPosts(1, 2);
+            Assert.Null(posts);
+        }
+
+        [Fact]
+        public void GetBySlug_RetunsNull_WhenMarkdownFileDoesnotExist()
+        {
+            var markdownGetter = new Mock<IMarkdownGetter>();
+            markdownGetter.Setup(x => x.GetBySlug(It.IsAny<string>())).Throws<FileNotFoundException>();
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var posts = markdownPostData.GetBySlug("not-existed-post");
+            Assert.Null(posts);
+        }
+
+        [Fact]
+        public void GetBySlug_RetunsNull_WhenMarkdownDirectoryDoesnotExist()
+        {
+            var markdownGetter = new Mock<IMarkdownGetter>();
+            markdownGetter.Setup(x => x.GetBySlug(It.IsAny<string>())).Throws<DirectoryNotFoundException>();
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var posts = markdownPostData.GetBySlug("not-existed-post");
+            Assert.Null(posts);
         }
     }
 }
