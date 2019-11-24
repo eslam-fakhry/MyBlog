@@ -21,6 +21,7 @@ title:Game Development with C#
 tags: c# .net game
 date:1-may-2019
 excerpt:I will tell you all about that game development
+image: url-of-the-image.png
 ---
 # heading 1";
 
@@ -36,6 +37,7 @@ excerpt:I will tell you all about that game development
             Assert.Equal("I will tell you all about that game development", post.Excerpt);
             Assert.Equal("Game Development with C#", post.Title);
             Assert.Equal("my-first-blog-post", post.Slug);
+            Assert.Equal("url-of-the-image.png", post.Image);
         }
 
         [Theory]

@@ -80,6 +80,7 @@ namespace MyBlog.Services
                 Title = metadataDictionary.GetValueOrDefault("title"),
                 Excerpt = metadataDictionary.GetValueOrDefault("excerpt"),
                 Slug = metadataDictionary.GetValueOrDefault("slug"),
+                Image = metadataDictionary.GetValueOrDefault("image"),
                 PublishDate = publishDate
             };
         }

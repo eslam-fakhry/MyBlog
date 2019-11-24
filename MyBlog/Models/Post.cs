@@ -17,5 +17,6 @@ namespace MyBlog.Models
         public DateTime PublishDate { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public string Slug { get; set; }
+        public string Image { get; set; }
     }
 }
