@@ -4,7 +4,14 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<ul>
+    @foreach (var post in Model.Posts)
+    {
+        <li><a href="/@post.Slug">@post.Title</a></li>
+    }
+</ul>
+
+<div class="d-flex">
+    page @Model.Posts.PageIndex of @Model.Posts.TotalPages
 </div>
+
