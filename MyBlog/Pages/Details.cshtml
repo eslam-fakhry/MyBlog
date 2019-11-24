@@ -2,7 +2,7 @@
 @model MyBlog.Pages.DetailsModel
 
 @{
-    ViewData["Title"] = $"{Model.Post.Title} | Eslam Fakhry";
+    ViewData["Title"] = $"{Model.Post.Title}";
 }
 
 @if (!string.IsNullOrWhiteSpace(@Model.Post.Image))
