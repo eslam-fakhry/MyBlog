@@ -2,6 +2,8 @@
 @model MyBlog.Pages.DetailsModel
 
 @{
-    ViewData["Title"] = "Post Details";
+    ViewData["Title"] = $"{Model.Post.Title} | Eslam Fakhry";
 }
-<h1>Post Details</h1>
+<div>
+    @Html.Raw(Model.Post.Content)
+</div>
