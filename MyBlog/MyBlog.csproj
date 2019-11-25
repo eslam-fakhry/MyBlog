@@ -8,5 +8,10 @@
     <PackageReference Include="Markdig.Signed" Version="0.18.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
   </ItemGroup>
-
+    <ItemGroup>
+        <!-- Don't publish the ClientScripts source files, but do show them in the project files list -->
+        <Content Remove="ClientScripts\**" />
+        <None Remove="ClientScripts\**" />
+        <None Include="ClientScripts\**" Exclude="ClientScripts\node_modules\**" />
+    </ItemGroup>
 </Project>
