@@ -1,0 +1,34 @@
+﻿@using MyBlog.Models
+@using MyBlog.Utilities
+@model PaginatedCollection<Post>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="d-flex justify-content-center align-content-center mt-4 mt-md-5">
+
+    <span>
+        <a asp-page="Index"
+           asp-route-pageIndex="@(Model.PageIndex - 1) "
+           class="btn btn-pagination @prevDisabled">
+            <svg width="12" height="19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.5 0.999802L1 9.66006L11.5 18.3203" stroke="currentColor"/>
+            </svg>
+        </a>
+    </span>
+
+    <span class="d-flex align-items-center">@Model.PageIndex / @Model.TotalPages </span>
+
+    <span>
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.PageIndex + 1)"
+           class="btn btn-pagination @nextDisabled">
+            <svg width="13" height="19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.999999 18.3205L11.5 9.66025L1 1" stroke="currentColor"/>
+            </svg>
+        </a>
+    </span>
+
+</div>

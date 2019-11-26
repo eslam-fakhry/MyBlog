@@ -15,7 +15,6 @@
         @Html.Partial("Shared/_PostItemDisplay", post)
     }
 
-    <div class="d-flex">
-        page @Model.Posts.PageIndex of @Model.Posts.TotalPages
+            @Html.Partial("Shared/_Pagination", Model.Posts)
     </div>
 </div>
