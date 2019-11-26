@@ -31,7 +31,12 @@ namespace MyBlogTests
             var postData = new Mock<IPostData>();
             postData.Setup((x) => x.GetPaginatedPosts(It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(() => posts);
-            var indexModel = new IndexModel(postData.Object);
+            var configurationMock = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
+
+            configurationMock.Setup(x => x[It.IsAny<string>()])
+                .Returns(() => "2");
+            
+            var indexModel = new IndexModel(postData.Object, configurationMock.Object);
 
             indexModel.OnGet(pageIndex);
 
