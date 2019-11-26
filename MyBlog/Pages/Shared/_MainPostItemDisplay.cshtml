@@ -2,7 +2,7 @@
 
 <section>
     <div class="row overflow-hidden">
-        <div class="col-12 col-md-4 main-post__details overflow-hidden pr-5 pl-4 d-flex flex-column justify-content-between shadow-sm">
+        <div class="col-12 col-sm-6 col-md-4 main-post__details overflow-hidden pr-5 pl-4 d-flex flex-column justify-content-between shadow-sm">
             <div >
                @Html.Partial("_TagsDisplay",@Model.Tags) 
                 <h2 class="main-post__title text-white font-weight-lighter mt-3 mb-3 mb-md-4 pb-2 pb-md-3">@Model.Title</h2>
@@ -19,8 +19,8 @@
                 </a>
             </div>
         </div >
-        <div class="col-12 col-md-8 p-0">
-            <img class="main-post__image"
+        <div class="col-12 col-sm-6 col-md-8 p-0">
+            <img class="cover-image"
                  src="@Model.Image" alt="Post cover image">
         </div>
     </div>
