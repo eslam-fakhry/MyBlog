@@ -9,13 +9,11 @@
         <div class="col-12 col-sm-6 col-md-6 post-item__details overflow-hidden pl-4 d-flex flex-column justify-content-between shadow-sm">
             <div >
                @Html.Partial("_TagsDisplay",@Model.Tags) 
-                <h2 class="post-item__title text-dark mt-3 mb-2">What Every Web Developer Needs to Know</h2>
-                <p class="post-item__date text-muted mt-1 ">26-Nov-2019</p>
+                <h2 class="post-item__title text-dark mt-3 mb-2">@Model.Title</h2>
+                <p class="post-item__date text-muted mt-1 ">@Model.PublishDate</p>
             </div>
             <div>
-                <p class="post-item__excerpt text-dark">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse expedita nostrum officiis placeat, qui quos. 
-                </p>
+                <p class="post-item__excerpt text-dark">@Model.Excerpt</p>
                 <a asp-page="Details"
                    asp-route-slug="@Model.Slug"
                    class="btn btn-light btn-gray-light text-uppercase mb-3 mr-2 mt-2">
