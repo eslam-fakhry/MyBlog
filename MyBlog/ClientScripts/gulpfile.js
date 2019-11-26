@@ -32,6 +32,6 @@ gulp.task('js:watch', function () {
 })
 
 gulp.task('watch',function(){
-    gulp.watch('./src/sass/*.scss', gulp.series(['sass:dev']))
+    gulp.watch('./src/sass/**/*.scss', gulp.series(['sass:dev']))
     gulp.watch('./src/js/app.js', gulp.series(['js:dev']))
 })
