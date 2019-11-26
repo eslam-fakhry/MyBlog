@@ -1,0 +1,32 @@
+﻿@model MyBlog.Models.Post
+
+<section>
+    <div class="row overflow-hidden">
+        <div class="col-12 col-md-4 main-post__details overflow-hidden pr-5 pl-4 d-flex flex-column justify-content-between shadow-sm">
+            <div >
+                <div class="main-post__tags text-accent text-truncate mt-4 mt-md-5 mb-1 d-flex">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <span class="badge badge-accent mx-1 text-uppercase">@tag</span>
+                    }
+                </div>
+                <h2 class="main-post__title text-white font-weight-lighter mt-3 mb-3 mb-md-4 pb-2 pb-md-3">@Model.Title</h2>
+                <p class="main-post__date mt-1 ">@Model.PublishDate</p>
+            </div>
+            <div>
+                <p class="main-post__excerpt">
+                    @Model.Excerpt
+                </p>
+                <a asp-page="Details"
+                   asp-route-slug="@Model.Slug"
+                   class="btn btn-dark btn-gray text-uppercase mb-4 mb-md-7 mr-2 mt-2">
+                    read more <span class="btn__arrow mx-3"></span>
+                </a>
+            </div>
+        </div >
+        <div class="col-12 col-md-8 bg-accent p-0">
+            <img class="main-post__image"
+                 src="@Model.Image" alt="Post cover image">
+        </div>
+    </div>
+</section>

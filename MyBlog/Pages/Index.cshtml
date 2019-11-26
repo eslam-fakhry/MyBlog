@@ -4,14 +4,18 @@
     ViewData["Title"] = "Home page";
 }
 
-<ul>
-    @foreach (var post in Model.Posts)
+<div class="container">
+    @if (Model.Posts.Count > 0)
     {
-        <li><a href="/@post.Slug">@post.Title</a></li>
+        @Html.Partial("Shared/_MainPostItemDisplay", Model.Posts.First())
     }
-</ul>
 
-<div class="d-flex">
-    page @Model.Posts.PageIndex of @Model.Posts.TotalPages
+    @foreach (var post in Model.Posts.Skip(1))
+    {
+        @Html.Partial("Shared/_PostItemDisplay", post)
+    }
+
+    <div class="d-flex">
+        page @Model.Posts.PageIndex of @Model.Posts.TotalPages
+    </div>
 </div>
-

@@ -1,0 +1,53 @@
+﻿.main-post {
+  &__details {
+    background-color: $gray-900;
+  }
+
+  &__tags {
+    .badge {
+
+      @include media-breakpoint-down(xs) {
+        font-size: .6rem;
+
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-size: 1.75rem;
+    @include media-breakpoint-up(md) {
+      font-size: 2rem;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 20%;
+      border-bottom: 2px solid theme-color('accent');
+    }
+  }
+
+  &__date {
+    font-size: 0.85rem;
+    color: $gray-600;
+  }
+
+  &__excerpt {
+    margin-top: 1.5rem;
+    color: $gray-500;
+    @include media-breakpoint-up(md) {
+      margin-top: 4.5rem;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,2 +1,50 @@
 ﻿@import "custom";
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import "components/main-post";
+
+.btn {
+  &__arrow {
+    position: relative;
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 2px;
+      left: 50%;
+      top:50%;
+      transform:translate(0,-50);
+      background: $gray-500;
+      transform-origin: right center ;
+      transition: transform 0.5s cubic-bezier(0,.65,.14,1.2);
+      backface-visibility: hidden;
+    }
+    &::before{
+      transform: translate(0,-50%) rotate(180deg) scale(0);
+    }
+    &::after{
+      transform: translate(0,-50%) rotate(-180deg) scale(0);
+    }
+  }
+  &:hover &__arrow{
+    &::before{
+        transform: translate(0,-50%) rotate(-45deg) scale(1);
+    }
+    &::after{
+        transform: translate(0,-50%) rotate(45deg) scale(1);
+    }
+  }
+
+  &-gray {
+    background: $gray-600;
+    opacity: 0.8;
+    font-size: 1rem;
+  }
+}
+
+.container{
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+  }
+}
+
