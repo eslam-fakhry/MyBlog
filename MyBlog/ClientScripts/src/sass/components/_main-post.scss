@@ -3,15 +3,6 @@
     background-color: $gray-900;
   }
 
-  &__tags {
-    .badge {
-
-      @include media-breakpoint-down(xs) {
-        font-size: .6rem;
-
-      }
-    }
-  }
 
   &__title {
     position: relative;

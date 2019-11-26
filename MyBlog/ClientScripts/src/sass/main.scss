@@ -48,3 +48,12 @@
   }
 }
 
+.tags {
+  .badge {
+
+    @include media-breakpoint-down(xs) {
+      font-size: .6rem;
+
+    }
+  }
+}
