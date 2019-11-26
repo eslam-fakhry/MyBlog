@@ -4,17 +4,25 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="container">
+<div class="container container-md-down-fluid">
     @if (Model.Posts.Count > 0)
     {
         @Html.Partial("Shared/_MainPostItemDisplay", Model.Posts.First())
     }
 
-    @foreach (var post in Model.Posts.Skip(1))
-    {
-        @Html.Partial("Shared/_PostItemDisplay", post)
-    }
+    <div class="row">
+        <div class="col-12 col-md-9">
+            @foreach (var post in Model.Posts.Skip(1))
+            {
+                @Html.Partial("Shared/_PostItemDisplay", post)
+            }
 
             @Html.Partial("Shared/_Pagination", Model.Posts)
+        </div>
+        <div class="col-3 d-none d-md-block bg-success">
+        </div>
+        
     </div>
+
+
 </div>

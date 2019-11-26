@@ -40,6 +40,15 @@
     opacity: 0.8;
     font-size: 1rem;
   }
+  &-gray-light{
+    background: $gray-100;
+    box-shadow: $box-shadow-sm;
+  }
+  &-gray-light &__arrow{
+    &::before, &::after {
+      background: $gray-800;
+    }
+  }
   &-pagination{
     &.disabled{
       color:$gray-500;
@@ -51,7 +60,7 @@
   }
 }
 
-.container{
+.container .container-md-down-fluid{
   @include media-breakpoint-down(md) {
     max-width: 100%;
   }
@@ -59,10 +68,26 @@
 
 .tags {
   .badge {
-
     @include media-breakpoint-down(xs) {
       font-size: .6rem;
 
     }
   }
+}
+
+.post-item{
+  &__title{
+    font-size: 1.5rem;
+  }
+  .tags{
+    margin-bottom: 0.25rem!important;
+    margin-top:  1.5rem!important;
+    
+  }
+}
+
+.cover-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
