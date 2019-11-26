@@ -1,0 +1,19 @@
+﻿.details-cover{
+  max-height: 30rem;
+  .cover-image{
+    max-height: inherit;
+  }
+}
+
+.details-title{
+  
+  @include media-breakpoint-down(md){
+    font-size: 2rem;
+  }
+  @include media-breakpoint-down(sm){
+    font-size: 1.8rem;
+  }
+  @include media-breakpoint-down(xs){
+    font-size: 1.4rem;
+  }
+}

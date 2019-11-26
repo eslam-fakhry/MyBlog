@@ -1,6 +1,8 @@
 ﻿@import "custom";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "components/main-post";
+@import "components/post-content";
+@import "pages/details";
 
 .btn {
   &__arrow {
@@ -90,4 +92,9 @@
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.date{
+  font-size: 0.8rem;
+  color: $gray-500;
 }

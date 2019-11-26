@@ -5,10 +5,23 @@
     ViewData["Title"] = $"{Model.Post.Title}";
 }
 
-@if (!string.IsNullOrWhiteSpace(@Model.Post.Image))
-{
-    <img src="@Model.Post.Image" alt="Post cover image">
-}
-<div>
-    @Html.Raw(Model.Post.Content)
+<div class="container container-md-down-fluid">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+            
+            <h1 class="details-title pb-3 pr-3 pt-3 pt-sm-4 pt-md-5 font-weight-bold">@Model.Post.Title</h1>
+
+            @if (!string.IsNullOrWhiteSpace(@Model.Post.Image))
+            {
+                <div class="details-cover mb-4">
+                    <img src="@Model.Post.Image" alt="Post cover image" class="cover-image">
+                </div>
+            }
+            @Html.Partial("_TagsDisplay", @Model.Post.Tags)
+            <p class="date mt-2">@Model.Post.PublishDate</p>
+
+            <div class="post-content pb-7">
+                @Html.Raw(Model.Post.Content)
+            </div>
+        </div></div>
 </div>
