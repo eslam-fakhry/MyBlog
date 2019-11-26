@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<string>
 
-<div class="tags text-accent text-truncate mt-4 mt-md-5 mb-1 d-flex">
+<div class="tags text-accent text-truncate  d-flex @ViewData["cssClass"]">
     @foreach (var tag in Model)
     {
         <span class="badge badge-accent mx-1 font-weight-normal text-uppercase">@tag</span>

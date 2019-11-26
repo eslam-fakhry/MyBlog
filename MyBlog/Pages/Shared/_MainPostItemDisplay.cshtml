@@ -4,7 +4,7 @@
     <div class="row overflow-hidden">
         <div class="col-12 col-sm-6 col-md-4 main-post__details overflow-hidden pr-5 pl-4 d-flex flex-column justify-content-between shadow-sm">
             <div >
-               @Html.Partial("_TagsDisplay",@Model.Tags) 
+               @Html.Partial("_TagsDisplay",@Model.Tags ,new ViewDataDictionary(ViewData) { {"cssClass","mt-4 mt-md-5 mb-1"}}) 
                 <h2 class="main-post__title text-white font-weight-lighter mt-3 mb-3 mb-md-4 pb-2 pb-md-3">@Model.Title</h2>
                 <p class="main-post__date mt-1 ">@Model.PublishDate</p>
             </div>
