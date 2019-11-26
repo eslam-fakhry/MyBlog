@@ -1,12 +1,12 @@
 @model MyBlog.Models.Post
 
 <section class="mt-5">
-    <div class="row post-item ">
+    <div class="row post-item shadow-sm">
         <div class=" col-12 col-sm-6 col-md-5 p-0">
             <img class="cover-image"
                  src="@Model.Image" alt="Post cover image">
         </div>
-        <div class="col-12 col-sm-6 col-md-6 post-item__details overflow-hidden pl-4 d-flex flex-column justify-content-between shadow-sm">
+        <div class="col-12 col-sm-6 col-md-7 post-item__details overflow-hidden pl-4 d-flex flex-column justify-content-between">
             <div >
                @Html.Partial("_TagsDisplay",@Model.Tags) 
                 <h2 class="post-item__title text-dark mt-3 mb-2">@Model.Title</h2>
