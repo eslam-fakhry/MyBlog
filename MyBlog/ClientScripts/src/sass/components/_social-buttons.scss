@@ -1,0 +1,24 @@
+﻿.social-btn {
+  $marginX: .2rem;
+  $height: 25px;
+  height: $height;
+  width: $height;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: $marginX;
+  margin-right: $marginX;
+
+  background: $gray-500;
+  color: $gray-900;
+
+  &:hover {
+    background: theme-color("success");
+    color: $white;
+  }
+
+  svg {
+    height: 60%;
+  }
+}

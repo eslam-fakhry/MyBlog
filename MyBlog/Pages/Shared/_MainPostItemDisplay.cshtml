@@ -4,7 +4,7 @@
     <div class="row overflow-hidden">
         <div class="col-12 col-sm-6 col-md-4 main-post__details overflow-hidden pr-5 pl-4 d-flex flex-column justify-content-between shadow-sm">
             <div >
-               @Html.Partial("_TagsDisplay",@Model.Tags ,new ViewDataDictionary(ViewData) { {"cssClass","mt-4 mt-md-5 mb-1"}}) 
+                @Html.Partial("_TagsDisplay", @Model.Tags, new ViewDataDictionary(ViewData) {{"cssClass", "mt-4 mt-md-5 mb-1"}})
                 <h2 class="main-post__title text-white font-weight-lighter mt-3 mb-3 mb-md-4 pb-2 pb-md-3">@Model.Title</h2>
                 <p class="main-post__date mt-1 ">@Model.PublishDate</p>
             </div>
@@ -12,11 +12,14 @@
                 <p class="main-post__excerpt">
                     @Model.Excerpt
                 </p>
-                <a asp-page="Details"
-                   asp-route-slug="@Model.Slug"
-                   class="btn btn-dark btn-gray text-uppercase mb-4 mb-md-7 mr-2 mt-2">
-                    read more <span class="btn__arrow mx-3"></span>
-                </a>
+                <div class="d-flex flex-wrap justify-content-between mb-4 mb-md-7 mr-2 mt-2">
+                    <a asp-page="Details"
+                       asp-route-slug="@Model.Slug"
+                       class="btn btn-dark btn-gray text-uppercase my-3">
+                        read more <span class="btn__arrow mx-3"></span>
+                    </a>
+                    @Html.Partial("SocialButtons/_ShareButtons", "post1")
+                </div>
             </div>
         </div >
         <div class="col-12 col-sm-6 col-md-8 p-0">

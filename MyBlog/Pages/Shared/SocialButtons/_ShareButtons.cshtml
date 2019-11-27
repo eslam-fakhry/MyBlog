@@ -1,0 +1,7 @@
+﻿@model string
+
+<div class="d-flex align-items-center">
+    @Html.Partial("SocialButtons/_FacebookShareButton", @Model)
+    @Html.Partial("SocialButtons/_TwitterShareButton", @Model)
+    @Html.Partial("SocialButtons/_LinkedinShareButton", @Model)
+</div>
