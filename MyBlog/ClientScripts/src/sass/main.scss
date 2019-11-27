@@ -2,11 +2,13 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "components/main-post";
 @import "components/post-content";
+@import "components/social-buttons";
 @import "pages/details";
 
 .btn {
   &__arrow {
     position: relative;
+
     &::before, &::after {
       content: '';
       display: block;
@@ -14,26 +16,30 @@
       width: 10px;
       height: 2px;
       left: 50%;
-      top:50%;
-      transform:translate(0,-50);
+      top: 50%;
+      transform: translate(0, -50);
       background: $gray-500;
-      transform-origin: right center ;
-      transition: transform 0.5s cubic-bezier(0,.65,.14,1.2);
+      transform-origin: right center;
+      transition: transform 0.5s cubic-bezier(0, .65, .14, 1.2);
       backface-visibility: hidden;
     }
-    &::before{
-      transform: translate(0,-50%) rotate(180deg) scale(0);
+
+    &::before {
+      transform: translate(0, -50%) rotate(180deg) scale(0);
     }
-    &::after{
-      transform: translate(0,-50%) rotate(-180deg) scale(0);
+
+    &::after {
+      transform: translate(0, -50%) rotate(-180deg) scale(0);
     }
   }
-  &:hover &__arrow{
-    &::before{
-        transform: translate(0,-50%) rotate(-45deg) scale(1);
+
+  &:hover &__arrow {
+    &::before {
+      transform: translate(0, -50%) rotate(-45deg) scale(1);
     }
-    &::after{
-        transform: translate(0,-50%) rotate(45deg) scale(1);
+
+    &::after {
+      transform: translate(0, -50%) rotate(45deg) scale(1);
     }
   }
 
@@ -42,27 +48,31 @@
     opacity: 0.8;
     font-size: 1rem;
   }
-  &-gray-light{
+
+  &-gray-light {
     background: $gray-100;
     box-shadow: $box-shadow-sm;
   }
-  &-gray-light &__arrow{
+
+  &-gray-light &__arrow {
     &::before, &::after {
       background: $gray-800;
     }
   }
-  &-pagination{
-    &.disabled{
-      color:$gray-500;
+
+  &-pagination {
+    &.disabled {
+      color: $gray-500;
     }
-    &:hover{
-      color:theme-color('accent');
+
+    &:hover {
+      color: theme-color('accent');
     }
-    
+
   }
 }
 
-.container .container-md-down-fluid{
+.container .container-md-down-fluid {
   @include media-breakpoint-down(md) {
     max-width: 100%;
   }
@@ -77,14 +87,15 @@
   }
 }
 
-.post-item{
-  &__title{
+.post-item {
+  &__title {
     font-size: 1.5rem;
   }
-  .tags{
-    margin-bottom: 0.25rem!important;
-    margin-top:  1.5rem!important;
-    
+
+  .tags {
+    margin-bottom: 0.25rem !important;
+    margin-top: 1.5rem !important;
+
   }
 }
 
@@ -94,7 +105,8 @@
   width: 100%;
 }
 
-.date{
+.date {
   font-size: 0.8rem;
   color: $gray-500;
 }
+
