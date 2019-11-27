@@ -18,7 +18,7 @@
                        class="btn btn-dark btn-gray text-uppercase my-3">
                         read more <span class="btn__arrow mx-3"></span>
                     </a>
-                    @Html.Partial("SocialButtons/_ShareButtons", "post1")
+                    @Html.Partial("SocialButtons/_ShareButtons", Url.PageLink("Details",null ,new {slug = Model.Slug}))
                 </div>
             </div>
         </div >
