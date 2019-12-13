@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="container container-md-down-fluid">
+<div>
     @if (Model.Posts.Count > 0)
     {
         @Html.Partial("Shared/_MainPostItemDisplay", Model.Posts.First())
