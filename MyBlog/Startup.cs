@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyBlog.Services;
+using MyBlog.Services.Markdown;
 
 namespace MyBlog
 {
@@ -27,6 +28,7 @@ namespace MyBlog
             services.AddRazorPages();
             services.AddScoped(typeof(IMarkdownGetter), typeof(FileMarkdownGetter));
             services.AddScoped(typeof(IPostData), typeof(MarkdownPostData));
+            services.AddScoped(typeof(IMarkdownConverter), typeof(MarkdigAdapter));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

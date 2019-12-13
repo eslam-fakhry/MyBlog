@@ -1,11 +1,11 @@
-﻿using Markdig;
-using MyBlog.Models;
+﻿using MyBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MyBlog.Services.Markdown;
 using MyBlog.Utilities;
 
 namespace MyBlog.Services
@@ -13,10 +13,12 @@ namespace MyBlog.Services
     public class MarkdownPostData : IPostData
     {
         private IMarkdownGetter _markdownGetter;
+        private readonly IMarkdownConverter _markdownConverter;
 
-        public MarkdownPostData(IMarkdownGetter markdownGetter)
+        public MarkdownPostData(IMarkdownGetter markdownGetter, IMarkdownConverter markdownConverter)
         {
             _markdownGetter = markdownGetter;
+            _markdownConverter = markdownConverter;
         }
 
 
@@ -65,7 +67,7 @@ namespace MyBlog.Services
 
             var metadata = ts.Groups["metadata"].Value.Trim();
             var content = ts.Groups["content"].Value.Trim();
-            var result = Markdown.ToHtml(content);
+            var result = _markdownConverter.Convert(content);
             var metadataDictionary = GetMetadataDictionary(metadata);
 
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MyBlog.Models;
+using MyBlog.Services.Markdown;
 using Xunit;
 
 namespace MyBlogTests
@@ -27,7 +28,11 @@ image: url-of-the-image.png
 
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetBySlug(It.IsAny<string>())).Returns(() => markdown);
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h1>heading 1</h1>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
 
             var post = markdownPostData.GetBySlug(slug);
 
@@ -81,7 +86,12 @@ excerpt:Another excerpt text
 
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetAll()).Returns(() => markdowns);
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h2>heading 2</h2>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
+
             var posts = markdownPostData.GetPaginatedPosts(1, pageSize);
             Assert.IsAssignableFrom<IEnumerable<Post>>(posts);
             Assert.Equal(pageSize, posts.Count);
@@ -126,7 +136,10 @@ excerpt:Another excerpt text
 
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetAll()).Returns(() => markdowns);
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h2>heading 2</h2>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
             var posts = markdownPostData.GetPaginatedPosts(pageIndex, 2);
             Assert.Equal(expectedTitle, posts.First().Title);
         }
@@ -136,7 +149,10 @@ excerpt:Another excerpt text
         {
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetAll()).Throws<DirectoryNotFoundException>();
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h1>heading 1</h1>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
             var posts = markdownPostData.GetPaginatedPosts(1, 2);
             Assert.Null(posts);
         }
@@ -146,7 +162,10 @@ excerpt:Another excerpt text
         {
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetBySlug(It.IsAny<string>())).Throws<FileNotFoundException>();
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h1>heading 1</h1>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
             var posts = markdownPostData.GetBySlug("not-existed-post");
             Assert.Null(posts);
         }
@@ -156,7 +175,10 @@ excerpt:Another excerpt text
         {
             var markdownGetter = new Mock<IMarkdownGetter>();
             markdownGetter.Setup(x => x.GetBySlug(It.IsAny<string>())).Throws<DirectoryNotFoundException>();
-            var markdownPostData = new MarkdownPostData(markdownGetter.Object);
+            var markdownConverter = new Mock<IMarkdownConverter>();
+            markdownConverter.Setup(x => x.Convert(It.IsAny<string>())).Returns(() => "<h1>heading 1</h1>");
+
+            var markdownPostData = new MarkdownPostData(markdownGetter.Object, markdownConverter.Object);
             var posts = markdownPostData.GetBySlug("not-existed-post");
             Assert.Null(posts);
         }
